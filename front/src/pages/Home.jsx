@@ -1,4 +1,4 @@
-import CardPizza from './CardPizza.jsx';
+import CardPizza from './CardPizza';
 import { useEffect, useState } from 'react';
 
 const Home = () => {

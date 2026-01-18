@@ -28,7 +28,7 @@ const Pizza = ({ id = 'p001' }) => {
   if (!pizza) return <p style={{ textAlign: 'center', padding: '20px' }}>Pizza no encontrada</p>;
 
   return (
-    <div style={{ maxWidth: '800px', margin: '2rem auto', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' }}>
+    <div style={{ maxWidth: '800px', margin: '2rem auto', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' , color:"black" }}>
       <img 
         src={pizza.img} 
         alt={pizza.name} 

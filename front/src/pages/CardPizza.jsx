@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CardPizza = ({ pizza }) => {
   return (
@@ -24,6 +25,7 @@ const CardPizza = ({ pizza }) => {
           <li key={index}>{ingredient}</li>
         ))}
       </ul>
+      <Link to="/Pizza/p001" className='button' style={{background: "black"}}>Ver Mas Informacion</Link>
     </div>
   );
 };

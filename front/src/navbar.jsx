@@ -1,17 +1,19 @@
+import { Link } from "react-router-dom";
 import "./App.css";
 
-const Navbar = (props) => {
+const Navbar = () => {
   const total = 25000;
   const token = (true)
   return (
     <div className="navbar">
       <div style={{ display: "flex" }}>
         <h2>Pizzeria Mamma Mia!</h2>
-        <button>🍕Home</button>
+        <Link to="/" className="button">🍕Home</Link>
         {token ? (
           <>
-            <button>🔐Login</button>
-            <button>🔐Register</button>
+            <Link to="/Login" className="button">🔐Login</Link>
+            <Link to="/Register" className="button">🔐Register</Link>
+            <Link to="/Profile" className="button">Profile</Link>
           </>
         ) : (
           <>
@@ -21,7 +23,7 @@ const Navbar = (props) => {
         )}
       </div>
       <div>
-        <button>🛒 Total ${props.total}</button>
+        <Link to="/Cart" className="button">🛒 Total $</Link>
       </div>
     </div>
   );

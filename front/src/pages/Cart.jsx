@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { pizzas } from './pizzas.js';
+import { pizzas } from '../pizzas.js';
 
 const Cart = () => {
   const [pizzaCart, setPizzaCart] = useState(
@@ -61,7 +61,7 @@ const Cart = () => {
             </div>
           </div>
         ))}
-        <h3>Total: ${getTotal()}</h3>
+        <h3 >Total: ${getTotal()}</h3>
       </div>
     </div>
   );
