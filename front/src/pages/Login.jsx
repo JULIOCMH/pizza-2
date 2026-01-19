@@ -49,9 +49,9 @@ import { useState } from "react"
         <form onSubmit={handleLogin}>
             <div className="login">
                 {alerta && (error ? <p className="error">{alerta}</p> : <p className="check">{alerta}</p> )}
-                <label>Nombre de Usuario</label>
+                <label style={{fontWeight:"800"}}>Nombre de Usuario</label>
                 <input type="text" name="usuario" onChange={(e) => setUsuario(e.target.value)} value={usuario} />
-                <label>Contraseña</label>
+                <label style={{fontWeight:"800"}}>Contraseña</label>
                 <input type="password" name="contraseña" onChange={(e) => setPassword(e.target.value)} value={password} />
                 <button type="submit">Iniciar</button>
             </div>

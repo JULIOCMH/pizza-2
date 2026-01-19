@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-const Pizza = ({ id = 'p001' }) => {
+const Pizza = () => {
+  const { id } = useParams();
   const [pizza, setPizza] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

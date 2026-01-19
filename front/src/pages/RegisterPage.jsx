@@ -39,11 +39,11 @@ import { useState } from "react"
      <form onSubmit={validarRegister}>
     <div className="RegisterPage">
         {alerta && (error ? <p className="error">{alerta}</p> : <p className="check">{alerta}</p>)}
-        <label>Nombre Usuario</label>
+        <label style={{fontWeight:"800"}}>Nombre Usuario</label>
     <input type="text" name="usuario" onChange={(e) => setUsuario(e.target.value)} value={usuario}/>
-    <label>Contraseña</label>
+    <label style={{fontWeight:"800"}}>Contraseña</label>
     <input type="password" name="Contraseña" onChange={(e) => setPassword(e.target.value)} value={password}/>
-    <label>Repita Contraseña</label>
+    <label style={{fontWeight:"800"}}>Repita Contraseña</label>
     <input type="password" name="RepitaContraseña" onChange={(e) => setRepassword(e.target.value)} value={repassword}/>
     <button type="submit">Enviar</button>
     </div>

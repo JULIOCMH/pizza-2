@@ -25,7 +25,7 @@ const CardPizza = ({ pizza }) => {
           <li key={index}>{ingredient}</li>
         ))}
       </ul>
-      <Link to="/Pizza/p001" className='button' style={{background: "black"}}>Ver Mas Informacion</Link>
+      <Link to={`/Pizza/${pizza.id}`} className='button' style={{background: "black"}}>Ver Mas Informacion</Link>
     </div>
   );
 };
