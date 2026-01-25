@@ -10,10 +10,11 @@ import Cart from "./pages/Cart.jsx";
 import Pizza from "./pages/Pizza.jsx";
 import Profile from "./pages/profile.jsx";
 import NotFound from "./pages/404.jsx";
+import ContextoGlobalProvider from "./context/ContextoGlobal.jsx";
 
 function App() {
   return (
-    <>
+    <ContextoGlobalProvider>
     <Routes>
       <Route element={
         <>
@@ -32,7 +33,7 @@ function App() {
       </Route>
          <Route path="/404" element={<NotFound></NotFound>}></Route>
       </Routes>
-    </>
+    </ContextoGlobalProvider>
   );
 }
 

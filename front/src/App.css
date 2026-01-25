@@ -55,7 +55,7 @@
   border: solid 1px white;
   transition: 0.7s;
 }
-.button:hover{
+.button:hover {
   background-color: wheat !important;
   color: black;
   border: solid 2px black;
@@ -72,7 +72,7 @@
 .RegisterPage button {
   margin-top: 1rem;
 }
-.RegisterPage input{
+.RegisterPage input {
   border-radius: 20px;
   height: 1.5rem;
   box-shadow: black 2px 4px 4px 3px;
@@ -81,19 +81,19 @@
   text-align: center;
 }
 
-.login{
-    display: flex;
+.login {
+  display: flex;
   flex-direction: column;
   color: black;
   align-items: center;
   gap: 15px;
   font-size: large;
 }
-.login button{
+.login button {
   margin-top: 1rem;
 }
 
-.login input{
+.login input {
   border-radius: 20px;
   height: 1.5rem;
   box-shadow: black 2px 4px 4px 3px;
@@ -102,7 +102,7 @@
   text-align: center;
 }
 
-.error{
+.error {
   background-color: red;
   border-radius: 15px;
   height: 3rem;
@@ -114,14 +114,14 @@
   border: solid 2px black;
   box-shadow: black 2px 2px 2px 2px;
 }
-.check{
-    background-color: green;
+.check {
+  background-color: green;
   border-radius: 15px;
   height: 3rem;
   width: 20rem;
   display: flex;
   align-items: center;
   justify-content: center;
-    border: solid 2px black;
+  border: solid 2px black;
   box-shadow: black 2px 2px 2px 2px;
 }

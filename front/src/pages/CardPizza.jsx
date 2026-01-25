@@ -1,9 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { ContextoGlobal } from "../context/ContextoGlobal";
 
 const CardPizza = ({ pizza }) => {
+  const { increaseQuantity } = useContext(ContextoGlobal);
+
   return (
-    <div className="cardbody"
+    <div
+      className="cardbody"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -14,18 +18,43 @@ const CardPizza = ({ pizza }) => {
         borderRadius: "10px",
         justifyContent: "space-between",
         minHeight: "100%",
-      }}>
-      <img src={pizza.img} alt={pizza.name} style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '8px' }} />
+      }}
+    >
+      <img
+        src={pizza.img}
+        alt={pizza.name}
+        style={{
+          width: "100%",
+          height: "200px",
+          objectFit: "cover",
+          borderRadius: "8px",
+        }}
+      />
       <h3>{pizza.name}</h3>
-      <p><strong>Precio: ${pizza.price}</strong></p>
+      <p>
+        <strong>Precio: ${pizza.price}</strong>
+      </p>
       <p>{pizza.desc}</p>
       <h4>Ingredientes:</h4>
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
+      <ul style={{ listStyleType: "none", padding: 0 }}>
         {pizza.ingredients.map((ingredient, index) => (
           <li key={index}>{ingredient}</li>
         ))}
       </ul>
-      <Link to={`/Pizza/${pizza.id}`} className='button' style={{background: "black"}}>Ver Mas Informacion</Link>
+      <Link
+        to={`/Pizza/${pizza.id}`}
+        className="button"
+        style={{ background: "black" }}
+      >
+        Ver Mas Informacion
+      </Link>
+      <button
+        onClick={() => increaseQuantity(pizza.id)}
+        className="button"
+        style={{ background: "black" }}
+      >
+        Agregar Al Carrito
+      </button>
     </div>
   );
 };
