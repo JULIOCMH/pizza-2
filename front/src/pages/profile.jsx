@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import "../App.css";
-
+import { useContext } from "react";
+import { ContextoGlobal } from "../context/ContextoGlobal";
 const Profile = () => {
+  const{setUser} = useContext(ContextoGlobal)
   return (
     <div
       style={{
@@ -13,9 +15,9 @@ const Profile = () => {
     >
       <h3 style={{ color: "black" }}>Nombre de Usuario</h3>
       <p style={{ color: "black" }}>example@gmail.com</p>
-      <Link to="/Login" className="button" style={{ background: "black" }}>
+      <button className="button" onClick={() => setUser(false)}>
         Cerrar Sesion
-      </Link>
+      </button>
     </div>
   );
 };

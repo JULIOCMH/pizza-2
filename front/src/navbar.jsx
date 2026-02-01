@@ -1,34 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./App.css";
 import { useContext } from "react";
 import { ContextoGlobal } from "./context/ContextoGlobal";
 
 const Navbar = () => {
-  const { getTotal } = useContext(ContextoGlobal);
-  const token = true;
+  const { getTotal, user, setUser } = useContext(ContextoGlobal);
   return (
     <div className="navbar">
       <div style={{ display: "flex" }}>
         <h2>Pizzeria Mamma Mia!</h2>
-        <Link to="/" className="button">
+        <NavLink to="/" className="button"
+        style={({isActive}) => ({color :isActive ? "red": "white"})}>
           🍕Home
-        </Link>
-        {token ? (
+        </NavLink>
+        {user ? (
           <>
-            <Link to="/Login" className="button">
-              🔐Login
-            </Link>
-            <Link to="/Register" className="button">
-              🔐Register
-            </Link>
-            <Link to="/Profile" className="button">
+            <NavLink to="/Profile" className="button"
+            style={({isActive}) => ({color :isActive ? "red": "white"})}>
               Profile
-            </Link>
+            </NavLink>
+            <button className="button" onClick={() => setUser(false)}>🔒Logout</button>
           </>
         ) : (
           <>
-            <button>🔒Logout</button>
-            <button>🔓Profile</button>
+          <NavLink to="/Login" className="button"
+            style={({isActive}) => ({color :isActive ? "red": "white"})}>
+              🔐Login
+            </NavLink>
+            <NavLink to="/Register" className="button"
+            style={({isActive}) => ({color :isActive ? "red": "white"})}>
+              🔐Register
+            </NavLink>
           </>
         )}
       </div>

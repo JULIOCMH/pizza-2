@@ -6,6 +6,8 @@ const ContextoGlobalProvider = ({ children }) => {
   const [pizzas, setPizzas] = useState([]);
   const [pizzaCart, setPizzaCart] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [user, setUser] = useState(true);
 
   useEffect(() => {
     const fetchPizzas = async () => {
@@ -17,6 +19,7 @@ const ContextoGlobalProvider = ({ children }) => {
         setPizzaCart([]);
       } catch (err) {
         console.error("Error cargando pizzas:", err);
+        setError([])
       } finally {
         setLoading(false);
       }
@@ -70,6 +73,9 @@ const ContextoGlobalProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         loading,
+        error,
+        user,
+        setUser,
       }}
     >
       {children}

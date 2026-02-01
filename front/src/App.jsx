@@ -10,11 +10,13 @@ import Cart from "./pages/Cart.jsx";
 import Pizza from "./pages/Pizza.jsx";
 import Profile from "./pages/profile.jsx";
 import NotFound from "./pages/404.jsx";
-import ContextoGlobalProvider from "./context/ContextoGlobal.jsx";
+import { ContextoGlobal } from "./context/ContextoGlobal.jsx";
+import { useContext } from "react";
 
 function App() {
+  const {user} = useContext(ContextoGlobal)
   return (
-    <ContextoGlobalProvider>
+    <>
     <Routes>
       <Route element={
         <>
@@ -25,15 +27,15 @@ function App() {
         </>
       }>
       <Route path="/" element={<Home></Home>}></Route>
-      <Route path="/Login" element={<Login></Login>}></Route>
-      <Route path="/Register" element={<RegisterPage></RegisterPage>}></Route>
+      <Route path="/Login" element={user ? <Home></Home> : <Login></Login>}></Route>
+      <Route path="/Register" element={user ? <Home></Home> : <RegisterPage></RegisterPage>}></Route>
       <Route path="/Cart" element={<Cart></Cart>}></Route>
       <Route path="/Pizza/:id" element={<Pizza></Pizza>}></Route>
-      <Route path="/Profile" element={<Profile></Profile>}></Route>
+      <Route path="/Profile" element={user ? <Profile></Profile> : <Login></Login>}></Route>
       </Route>
          <Route path="/404" element={<NotFound></NotFound>}></Route>
       </Routes>
-    </ContextoGlobalProvider>
+    </>
   );
 }
 

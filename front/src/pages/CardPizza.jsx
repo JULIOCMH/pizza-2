@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ContextoGlobal } from "../context/ContextoGlobal";
 
 const CardPizza = ({ pizza }) => {
   const { increaseQuantity } = useContext(ContextoGlobal);
+  const navigate = useNavigate();
+  const handleClick = () =>{
+    navigate(`/Pizza/${pizza.id}`)
+  }
 
   return (
     <div
@@ -41,13 +45,12 @@ const CardPizza = ({ pizza }) => {
           <li key={index}>{ingredient}</li>
         ))}
       </ul>
-      <Link
-        to={`/Pizza/${pizza.id}`}
-        className="button"
+      <button
+        onClick={() => handleClick()}
         style={{ background: "black" }}
       >
         Ver Mas Informacion
-      </Link>
+      </button>
       <button
         onClick={() => increaseQuantity(pizza.id)}
         className="button"

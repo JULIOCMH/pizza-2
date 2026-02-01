@@ -3,13 +3,16 @@ import { useContext } from "react";
 import { ContextoGlobal } from "../context/ContextoGlobal";
 
 const Home = () => {
-  const { pizzas, loading } = useContext(ContextoGlobal);
+  const { pizzas, loading, error} = useContext(ContextoGlobal);
 
   if (loading)
     return (
-      <p style={{ textAlign: "center", padding: "20px" }}>Cargando pizzas...</p>
+      <p style={{ textAlign: "center", padding: "20px", color:"red"}}>Cargando pizzas...</p>
     );
-
+ if (error)
+  return(
+<p style={{ textAlign: "center", padding: "20px", color:"red"}}>No se pudieron cargar las Pizzas...</p>
+)
   return (
     <div
       style={{

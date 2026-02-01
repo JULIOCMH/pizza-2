@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ContextoGlobal } from "../context/ContextoGlobal.jsx";
 
 const Cart = () => {
-  const { pizzaCart, getTotal, increaseQuantity, decreaseQuantity } =
+  const { pizzaCart, getTotal, increaseQuantity, decreaseQuantity,user } =
     useContext(ContextoGlobal);
 
   return (
@@ -55,6 +55,7 @@ const Cart = () => {
         ))}
         <h3>Total: ${getTotal()}</h3>
       </div>
+      {user ?  <button style={{backgroundColor:"black"}}>Pagar</button> : <button disabled style={{backgroundColor:"silver"}}>Pagar</button>}
     </div>
   );
 };

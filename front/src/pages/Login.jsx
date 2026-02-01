@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ContextoGlobal } from "../context/ContextoGlobal";
 
 const Login = () => {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [alerta, setAlerta] = useState("");
+  const {setUser} = useContext(ContextoGlobal)
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -40,6 +42,7 @@ const Login = () => {
       setAlerta("Inicio Exitoso");
       setUsuario("");
       setPassword("");
+      setUser(true)
     } else {
       setError(true);
       setAlerta("Usuario o contraseña incorrectos");
