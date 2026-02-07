@@ -8,7 +8,7 @@ const Login = () => {
   const [alerta, setAlerta] = useState("");
   const {setUser} = useContext(ContextoGlobal)
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setAlerta("");
 
@@ -17,35 +17,36 @@ const Login = () => {
       setAlerta("Todos los datos son obligatorios");
       return;
     }
-    const stored = localStorage.getItem("registeredUser");
-    if (!stored) {
-      setError(true);
-      setAlerta("No hay usuario registrado");
-      return;
-    }
-
-    let parsed;
     try {
-      parsed = JSON.parse(stored);
-    } catch (err) {
-      console.error("Error parseando usuario registrado", err);
-      setError(true);
-      setAlerta("Error con el usuario guardado");
-      return;
-    }
+      // 2. Aquí está el método POST hacia tu API
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST", // Especificamos que enviamos datos
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          email: usuario.trim(), 
+          password: password.trim() 
+        }),
+      });
 
-    if (
-      parsed.usuario === usuario.trim() &&
-      parsed.password === password.trim()
-    ) {
+      const data = await response.json();
+      if(!response.ok){
+        setError(true);
+      setAlerta(data.error || data.message || "Error al iniciar sesión");
+      }
+
+      localStorage.setItem("token", data.token); // Guardamos el token que nos da el server
       setError(false);
       setAlerta("Inicio Exitoso");
+      setUser(true); // Actualizamos el contexto global
+      
+      // Limpiamos los campos
       setUsuario("");
       setPassword("");
-      setUser(true)
-    } else {
+
+   } catch (err) {
+      // Por si el servidor está apagado o no hay internet
       setError(true);
-      setAlerta("Usuario o contraseña incorrectos");
+      setAlerta("Error conectando al servidor");
     }
   };
 

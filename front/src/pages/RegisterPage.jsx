@@ -7,9 +7,11 @@ const RegisterPage = () => {
   const [error, setError] = useState(false);
   const [alerta, setAlerta] = useState("");
 
-  const validarRegister = (e) => {
+  const validarRegister = async (e) => {
     e.preventDefault();
     setAlerta("");
+    setError(false);
+
     if (!usuario.trim() || !password.trim() || !repassword.trim()) {
       setError(true);
       setAlerta("Todos los datos son obligatorios");
@@ -20,20 +22,39 @@ const RegisterPage = () => {
       setAlerta("Las contraseñas no coinciden");
       return;
     }
-    if (password.trim().length < 6 && repassword.trim().length < 6) {
+    if (password.trim().length < 6) {
       setError(true);
       setAlerta("La contraseña debe tener al menos 6 caracteres");
       return;
     }
-    const registered = { usuario: usuario.trim(), password: password.trim() };
-    localStorage.setItem("registeredUser", JSON.stringify(registered));
 
-    setError(false);
-    setAlerta("Registro Exitoso");
-    setUsuario("");
-    setPassword("");
-    setRepassword("");
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: usuario.trim(), password: password.trim() }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(true);
+        setAlerta(data.error || data.message || "Error en el registro");
+        return;
+      }
+
+      localStorage.setItem("token", data.token);
+      setError(false);
+      setAlerta("Registro Exitoso");
+      setUsuario("");
+      setPassword("");
+      setRepassword("");
+    } catch (err) {
+      setError(true);
+      setAlerta("Error conectando al servidor");
+    }
   };
+
   return (
     <form onSubmit={validarRegister}>
       <div className="RegisterPage">
